@@ -5,19 +5,17 @@
 constexpr int BOARD_HEIGHT = 6;
 constexpr int BOARD_LENGTH = 9;
 
-constexpr ushort EMPTY = 0;
-constexpr ushort OWN = 1;
-constexpr ushort ENEMY = 2;
-
-constexpr char EMPTY_CHAR = ' ';
-constexpr char OWN_CHAR = 'X';
-constexpr char ENEMY_CHAR = 'O';
+enum class Player : char { EMPTY = ' ', OWN = 'X', ENEMY = 'O' };
+enum class GameState { RUNNING, TIE, ENEMY_WIN, OWN_WIN };
 
 class Board {
 public:
   Board();
+  Player getCell(int row, int col) const;
+  GameState getGameState(const Player &player);
+  bool placeCol( int col, const Player &player);
   void print();
 
 private:
-  ushort m_Board[BOARD_HEIGHT][BOARD_LENGTH];
+  Player m_Board[BOARD_HEIGHT][BOARD_LENGTH];
 };

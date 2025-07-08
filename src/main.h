@@ -1,3 +1,4 @@
 #pragma once
+#include "shared.h"
 
-int playComputer();
+GameState playComputer();
